@@ -1,9 +1,17 @@
-<p id="notice"><%= notice %></p>
+<p id="notice" xmlns="http://www.w3.org/1999/html"><%= notice %></p>
 
 <p>
   <strong>Title:</strong>
   <%= @project.title %>
 </p>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Add a new question', new_project_question_path(@project), class:
+                                    'btn
+btn-warning'
+%>
+
+<nav class='pager'>
+  <li><%= link_to 'Edit', edit_project_path(@project), class: 'previous'
+%></li>
+  <li><%= link_to 'Back', projects_path, class: 'next' %></li>
+</nav>

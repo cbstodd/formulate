@@ -1,0 +1,32 @@
+<h1>Listing questions</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Type of question</th>
+      <th>Project</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.title %></td>
+        <td><%= question.kind %></td>
+        <td><%= question.project %></td>
+        <td><%= link_to 'Show', [@project, question] %></td>
+        <td><%= link_to 'Edit', edit_project_question_path(@project, question)
+        %></td>
+        <td><%= link_to 'Destroy', [@project, question], method: :delete,
+                        data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Question', new_project_question_path, class: 'btn
+btn-primary' %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @question.title %>
+</p>
+
+<p>
+  <strong>Kind:</strong>
+  <%= @question.kind %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @question.project %>
+</p>
+
+<%= link_to 'Edit', edit_project_question_path %> |
+<%= link_to 'Back', project_questions_path %>
