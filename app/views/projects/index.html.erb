@@ -1,3 +1,5 @@
+<%= render 'layouts/messages' %>
+
 <h1>Projects</h1>
 
 <table class="table table-striped">
@@ -13,7 +15,7 @@
     <% @projects.each do |project| %>
       <tr>
         <td><%= project.id %></td>
-        <td><%= project.title %></td>
+        <td><%= project.title.to_s %></td>
         <td><%= link_to 'Show', project, class: '' %></td>
         <td><%= link_to 'Edit', edit_project_path(project), class: 'b' %></td>
         <td><%= link_to 'Delete', project, method: :delete,

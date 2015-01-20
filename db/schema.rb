@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150117004009) do
+ActiveRecord::Schema.define(version: 20150120000222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "possible_answers", force: true do |t|
+    t.integer  "question_id"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "possible_answers", ["question_id"], name: "index_possible_answers_on_question_id", using: :btree
 
   create_table "projects", force: true do |t|
     t.string   "title"

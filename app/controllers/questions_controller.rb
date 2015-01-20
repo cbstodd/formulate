@@ -16,6 +16,8 @@ class QuestionsController < ApplicationController
 
   def new
     @question = @project.questions.build
+    5.times { @question.possible_answers.build }
+
   end
 
   def edit
@@ -26,12 +28,12 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to project_questions_path, notice: 'Question was
+        format.html { redirect_to project_questions_url, notice: 'Question was
 successfully
 created.' }
         format.json { render :show, status: :created, location: @question }
       else
-        format.html { render :new }
+        format.html { render :new, alert: 'Something went wrong, try again.' }
         format.json { render json: @question.errors, status: :unprocessable_entity }
       end
     end
@@ -79,6 +81,8 @@ successfully destroyed.' }
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:title, :kind, :project_id)
+      params.require(:question).permit(:title, :kind, :project_id,
+                                       { possible_answers_attributes: [:title,
+                                                                        :question_id] })
     end
 end
